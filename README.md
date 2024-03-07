@@ -1,2 +1,2 @@
 # Computer-science
-Made for computer science...
+For github workspace/things i do in comp-sci.
