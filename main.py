@@ -64,12 +64,9 @@ keyword_dictionary = {
 }
 while True:
     keyword_input = str(input("Put in Keyword: "))
-    for x, y in keyword_dictionary.items():
-        if keyword_input.upper() == x:
-            print(x,":", y)
-        elif keyword_input.upper() != x:
-            print("STUPID!?!?!?")
-            break
     if keyword_input.lower() == 'no':
         break
-    
+    elif keyword_input.upper() in keyword_dictionary:
+        print(keyword_input.upper(), ":", keyword_dictionary[keyword_input.upper()])
+    else:
+        print("STUPID?!?!!?!.")
