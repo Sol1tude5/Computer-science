@@ -45,7 +45,22 @@ keyword_dictionary = {
     "GUI" : "Graphical user interface - Uses WIMPs to provide a way for the user to communicate with the computer",
     "CLI" : "Command line interface - Uses text and commands to provide a way for the user to communicate with the computer",
     "VOLATILE" : "Loses data when device is turned off",
-    "NON-VOLATILE" : "Retains data when device is turned off"
+    "NON-VOLATILE" : "Retains data when device is turned off",
+    "Internet": "The biggest network in the world",
+    "TCP": "Transmission Control Protocol",
+    "IP": "Internet Protocol",
+    "HTTP": "Hypertext Transfer Protocol",
+    "HTTPS": "Hypertext Transfer Protocol Secure",
+    "FTP": "File Transfer Protocol",
+    "DNS": "Domain Name System",
+    "VPN": "Virtual Private Network",
+    "MAC": "Media Access Control",
+    "NAT": "Network Address Translation",
+    "DHCP": "Dynamic Host Configuration Protocol",
+    "SMTP": "Simple Mail Transfer Protocol",
+    "POP": "Post Office Protocol",
+    "IMAP": "Internet Message Access Protocol",
+    "SSL": "Secure Sockets Layer",
 }
 while True:
     keyword_input = str(input("Put in Keyword: "))
