@@ -1,27 +1,58 @@
-
 keyword_dictionary = {
-    "LAN": "Local Area Network",
-    "WAN": "Wide Area Network",
-    "NIC": "Network Interface Card",
-    "WAP": "Wireless Access Point",
-    "Internet": "The biggest network in the world",
-    "TCP": "Transmission Control Protocol",
-    "IP": "Internet Protocol",
-    "HTTP": "Hypertext Transfer Protocol",
-    "HTTPS": "Hypertext Transfer Protocol Secure",
-    "FTP": "File Transfer Protocol",
-    "DNS": "Domain Name System",
-    "VPN": "Virtual Private Network",
-    "MAC": "Media Access Control",
-    "NAT": "Network Address Translation",
-    "DHCP": "Dynamic Host Configuration Protocol",
-    "SMTP": "Simple Mail Transfer Protocol",
-    "POP": "Post Office Protocol",
-    "IMAP": "Internet Message Access Protocol",
-    "SSL": "Secure Sockets Layer",
+    "LAN": "Local Area Network - covers a small geographical area",
+    "WAN": "Wide Area Network - covers a large geographical area",
+    "Bandwidth": "Amount of data that can be transmitted in a given time",
+    "NIC": "Allows devices to wirelessly connect built into the motherboard",
+    "Switch": "Recieves and transmits data between different devices using MAC address",
+    "Transmission Media": "Wired or wireless connection allow transmission between devices",
+    "WAP": "Allow devices to connect to a network wirelessly, similar to a switch",
+    "Router": "Transmits data between different networks using 'packets'",
+    "Twisted Pair": "Twisted sopper wires together in 4's to reduce internal interferance",
+    "Coaxial": "A single copper wire surronded by plastic insultaion and metallic mesh to shield from external interferance",
+    "Fibre optic": "Transmits data using light, can be sent over very large distances, little interferance, good performance but costly",
+    "Bluetooth": "Direct connection between 2 devices, low bandwidth, range of 10m",
+    "WiFi": "Can connect many devices together to a LAN at once, high bandwidth, range of 40-100m",
+    "Wired Networks": "Faster and more reliable than wireless",
+    "Wireless Networks": "Slower and lss reliable that wired",
+    "Compression": "Used to reduce the size of files benefiting storage space and read times",
+    "Defragmentaion": "To group all fragments of the same files together and the free space together to increase read and write times",
+    "Encryption": "Encrypts data to stop third parties from accessing it, needs a key to decrypt it",
+    "User management": "Restricts access to system using user accounts and passwords",
+    "File management" : "Manages where files are located - Moves,deletes,creates folders for files",
+    "Memory management" : "moves application data to main memory when is use",
+    "Peripheral management" : "Manages the devices that connect via the ports",
+    "Secondary storage" : "Non-volaite memory where data is stored when not in use",
+    "Main memory" : "Volaite memory where data is stored when in use",
+    "HDD" : "Hard disk drive - high capcity but easily damaged by impacts",
+    "SSD" : "Solid state drive - high capcity, quick read/write speed and shock resistant",
+    "Optical disc" : "Low capacity and easily scratched",
+    "Magnetic tape" : "Very high capacity but damaged very easily by imapcts, heat, magnets",
+    "Memory card" : "Low capacity but shock resitant",
+    "Internal storage" : "Storage within the computer",
+    "External storage" : "Storage outside the computer",
+    "Utility software" : "Software that aids in runnig the computer",
+    "User interface" : "Provides a way to communicate with the computer -GUI/CLI",
+    "Von neuman architecture" : "CU, ALU, registers and instructions and data stored in the same memory",
+    "CPU" : "Brain of the computer",
+    "ALU" : "Preforms all mathematical and logical operations",
+    "PC" : "Increments and points to the next instruction to be executed",
+    "MAR" : "Holds the address of the next instruction to be executed",
+    "MDR" : "Holds the data of the next instruction to be executed",
+    "Accumalator" : "Holds the result of the mathematical and logic operations preformed by the ALU",
+    "Fetch-execute cycle" : "The process of which instructions are executed and the computer runs",
+    "RAM" : "Random Access Memory - Volatile memory that stores application data in use",
+    "ROM" : "Read Only Memory - stores the BIOS and bootloader",
+    "GUI" : "Graphical user interface - Uses WIMPs to provide a way for the user to communicate with the computer",
+    "CLI" : "Command line interface - Uses text and commands to provide a way for the user to communicate with the computer",
+    "Volatile" : "Loses data when device is turned off",
+    "Non-volatile" : "Retains data when device is turned off",
+    "BIOS" : "Basic input output system",
+    "WIMP" : "Windows,icons,menus,pointers"
 }
-keyword_input = str(input("Put in Keyword: "))
-for x, y in keyword_dictionary.items():
-    if keyword_input == x:
-        print(x,":", y)
-
+while True:
+    keyword_input = str(input("Put in Keyword: "))
+    for x, y in keyword_dictionary.items():
+        if keyword_input == x:
+            print(x,":", y)
+    if keyword_input.lower() == 'no':
+        break
