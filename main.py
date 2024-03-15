@@ -64,9 +64,17 @@ keyword_dictionary = {
 }
 while True:
     keyword_input = str(input("Put in Keyword: "))
-    if keyword_input.lower() == 'no':
+    if keyword_input.lower() == 'list':
+        print("\n".join(keyword_dictionary))
+    elif keyword_input.lower() == 'no':
         break
     elif keyword_input.upper() in keyword_dictionary:
         print(keyword_input.upper(), ":", keyword_dictionary[keyword_input.upper()])
+    # elif statement to input a keyword and save it in the dictionary that is not in the dictionary if the input is 'add'
+    elif keyword_input.lower() == 'add':
+        new_keyword = str(input("Enter the new keyword: "))
+        new_definition = str(input("Enter the definition of the new keyword: "))
+        keyword_dictionary[new_keyword.upper()] = new_definition
+        print("Keyword added to the dictionary")
     else:
-        print("STUPID?!?!!?!.")
+        print("Enter a valid keyword or 'no' to exit.\n if you wish to see the list of keywords, type 'list' ")
