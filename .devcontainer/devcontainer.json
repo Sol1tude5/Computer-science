@@ -1,10 +1,12 @@
 {
     // Name this configuration
-    "name": "Codespace for Skills!",
+    "name": "Compsci 101",
     "customizations": {
         "vscode": {
             "extensions": [
-                "GitHub.copilot"
+                "GitHub.copilot",
+                "Microsoft.Python",
+                "Microsoft.Pylance"
             ]
         }
     }
