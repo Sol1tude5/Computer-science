@@ -1,9 +1,13 @@
 import random
 
+
+#Username is a global variable so 
+#I dont have to pass it as an argument to the functions
 username = ''
 
+#function to authenticate the user
 def auth():
-    #bl here is to check if the user is authenticated or not
+    #We return bl to use it as a condition to run the game
     bl = False
     with open('songgame/unp.txt', 'r') as f:
         un_pw = [line.strip().split(',') for line in f.readlines()]
@@ -16,6 +20,7 @@ def auth():
             if password == psi:
                 print('Access granted.')
                 bl = True
+                
             else:
                 print('Access denied.')
             break
@@ -24,11 +29,14 @@ def auth():
 
     return bl
 
+#main function to run the game
 def main():
     print("\nYou may guess twice to get the right song.")
     with open('songgame/SongnArtist.txt', 'r') as f:
         lines = f.readlines()
+        #shuffle the lines to get a random song
         random.shuffle(lines)
+        #iterate through the lines
         for line in lines:
             artist, song = line.strip().split(',')
             print("Artist:", artist)
@@ -39,20 +47,21 @@ def main():
                 update_score(3)
             else:
                 print("Sorry, wrong guess. Try again.")
-                wrong_guesses = 1
-                while wrong_guesses < 2:
+                wg = 1
+                while wg < 2:
                     ut = str(input("Enter the song: "))
                     if ut.lower() == song.lower():
                         print("\nCongratulations! You guessed the right song.")
                         update_score(1)
                         break
                     else:
-                        wrong_guesses += 1
+                        wg += 1
                 else:
                     print("\nSorry, wrong guess. The correct song was:", song)
                     game_end()
                     return
 
+#function to update the score
 def update_score(score):
     with open('scores.txt', 'r+') as f:
         lines = f.readlines()
@@ -65,6 +74,7 @@ def update_score(score):
         f.seek(0)
         f.writelines(lines)
     
+#function to end the game
 def game_end():
     with open('scores.txt', 'r') as f:
         lines = f.readlines()
@@ -77,7 +87,6 @@ def game_end():
     print("Game Over!")
     print("Your score is:", score,"Thank you for playing.")
 
-#run only if authentication is passed
+#run the game only if authentication is passed
 if auth():
     main()
-    update_score(0)
