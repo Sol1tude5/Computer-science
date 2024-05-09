@@ -1,92 +1,21 @@
-import random
-
-
-#Username is a global variable so 
-#I dont have to pass it as an argument to the functions
-username = ''
-
-#function to authenticate the user
-def auth():
-    #We return bl to use it as a condition to run the game
-    bl = False
-    with open('songgame/unp.txt', 'r') as f:
-        un_pw = [line.strip().split(',') for line in f.readlines()]
-    ch = input('Enter your username: ')
-
-    for username, password in un_pw:
-        if username == ch:
-            username = ch
-            psi = input('Enter your password: ')
-            if password == psi:
-                print('Access granted.')
-                bl = True
-                
-            else:
-                print('Access denied.')
-            break
+def calculate_check_digit(isbn):
+    total = 0
+    for i in range(10, 1, -1):
+        # The number has 10 information digits and ends with 1 check digit.
+        # Assuming the digits are "abcdefghij-k" where k is the check digit. Then the check digit is computed by the following formula:
+        # k = ( [a b c d e f g h i j] * [1 2 3 4 5 6 7 8 9 10] ) modulus 11. If the result is 10, the check digit is X.
+        # Instead of making a big numbers list, we can just iterate from 9 to 1 and multiply the number by the position, way more efficient.
+        total += int(isbn[10 - i]) * i
+    check_digit = 11 - (total % 11)
+    if check_digit == 10:
+        return 'X'
     else:
-        print('Access denied.')
+        return str(check_digit)
 
-    return bl
-
-#main function to run the game
-def main():
-    print("\nYou may guess twice to get the right song.")
-    with open('songgame/SongnArtist.txt', 'r') as f:
-        lines = f.readlines()
-        #shuffle the lines to get a random song
-        random.shuffle(lines)
-        #iterate through the lines
-        for line in lines:
-            artist, song = line.strip().split(',')
-            print("Artist:", artist)
-            print("Song's first letters:", ' '.join(word[0] for word in song.split()))
-            ut = str(input("Enter the song: "))
-            if ut.lower() == song.lower():
-                print("\nCongratulations! You guessed the right song.")
-                update_score(3)
-            else:
-                print("Sorry, wrong guess. Try again.")
-                wg = 1
-                while wg < 2:
-                    ut = str(input("Enter the song: "))
-                    if ut.lower() == song.lower():
-                        print("\nCongratulations! You guessed the right song.")
-                        update_score(1)
-                        break
-                    else:
-                        wg += 1
-                else:
-                    print("\nSorry, wrong guess. The correct song was:", song)
-                    game_end()
-                    return
-
-#function to update the score
-def update_score(score):
-    with open('scores.txt', 'r+') as f:
-        lines = f.readlines()
-        for i, line in enumerate(lines):
-            if username in line:
-                lines[i] = f"{username},{score}\n"
-                break
-        else:
-            lines.append(f"{username},{score}\n")
-        f.seek(0)
-        f.writelines(lines)
-    
-#function to end the game
-def game_end():
-    with open('scores.txt', 'r') as f:
-        lines = f.readlines()
-        for line in lines:
-            if username in line:
-                score = line.strip().split(',')[1]
-                break
-        else:
-            score = 0
-    print("Game Over!")
-    print("Your score is:", score,"Thank you for playing.")
-
-#run the game only if authentication is passed
-if auth():
-    main()
+book_num = input("Enter the 10 digit number: ")
+# check if the input is a 10 digit number
+if len(book_num) == 10 and book_num.isdigit():
+    isbn = book_num + calculate_check_digit(book_num)
+    print("The ISBN number for this book is:", isbn)
+else:
+    print("Invalid input. Please enter a 10 digit number.")
